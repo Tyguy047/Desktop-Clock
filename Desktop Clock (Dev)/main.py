@@ -1,24 +1,28 @@
-# Coded and Developed By: Tyler Caselli with help from Chat GPT
-# Coded In VS Code with Python on M1 MacBook Air (8gb Ram 256gb Storage)
-
 import pygame
 import datetime
 import sys
+import os
 
 pygame.init()
 
 # Set up the window
-WINDOW_WIDTH = 600
-WINDOW_HEIGHT = 400
+WINDOW_WIDTH = 400
+WINDOW_HEIGHT = 300
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption("Desktop Clock")
 
 # Set up the fonts
-date_font = pygame.font.SysFont('hensa', 60)
-time_font = pygame.font.SysFont('hensa', 90)
+date_font = pygame.font.SysFont('hensa', 40)
+time_font = pygame.font.SysFont('hensa', 60)
 
 # Set up the clock
 clock = pygame.time.Clock()
+
+# Set the icon file path
+icon_path = os.path.join(os.path.dirname(__file__), "icon.icns")
+
+# Set the icon for the application window
+pygame.display.set_icon(pygame.image.load(icon_path))
 
 # Run the game loop
 while True:
@@ -30,7 +34,7 @@ while True:
 
     # Get the current date and time
     now = datetime.datetime.now()
-    date_str = now.strftime("%m/%d/%Y")
+    date_str = now.strftime("%Y-%m-%d")
     time_str = now.strftime("%H:%M:%S")
 
     # Render the text
